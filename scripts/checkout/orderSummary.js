@@ -65,11 +65,6 @@ export function renderOrderSummary(){
             <div class="product-name">
                 ${matchingProduct.name}
             </div>
-            ${cartItem.brand ? `
-            <div class="product-brand">
-                ${cartItem.brand}
-            </div>
-            ` : ''}
             <div class="product-price">
             ${formatCurrency(matchingProduct.priceCents)}
             </div>

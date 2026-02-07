@@ -55,30 +55,5 @@ export function renderPaymentSummary(){
     `
     document.querySelector('.js-payment-summary').innerHTML = paymentSummaryHTML;
 
-    document.querySelector('.place-order-button').addEventListener('click', () => {
-        sendOrderToWhatsApp(totalCents);
-    });
-}
 
-function sendOrderToWhatsApp(totalCents) {
-    let message = "🛒 *Order Details*\n\n";
-    
-    // Collect item names and quantities
-    cart.forEach((cartItem) => {
-        const product = getProduct(cartItem.productId);
-        const brandText = cartItem.brand ? ` (${cartItem.brand})` : '';
-        message += `• ${product.name}${brandText} (Qty: ${cartItem.quantity})\n`;
-    });
-    
-    // Add total
-    message += `\n*Total: ksh${formatCurrency(totalCents)}*`;
-    
-    // Encode message for URL
-    const encodedMessage = encodeURIComponent(message);
-    
-    // WhatsApp URL (works for web)
-    const whatsappURL = `https://wa.me/254115955552?text=${encodedMessage}`;
-    
-    // Open WhatsApp
-    window.open(whatsappURL, '_blank');
 }
