@@ -82,7 +82,7 @@ cart.loadFromStorage();
 
 
 
-businessCart.loadFromStorage();
+businessCart.loadFromStorage(); 
 
 
 console.log(cart);
