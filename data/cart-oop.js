@@ -1,7 +1,8 @@
-const cart = {
+function Cart(localStorageKey){
+    const cart = {
     cartItems: undefined,
-    loadFromStorage(){
-        this.cartItems = JSON.parse(localStorage.getItem('cart-oop'));
+    loadFromStorage(){ 
+        this.cartItems = JSON.parse(localStorage.getItem(localStorageKey));
 
         if(!this.cartItems){
         this.cartItems = [{
@@ -16,10 +17,10 @@ const cart = {
         }
         } ,
     saveToStorage(){
-        localStorage.setItem('cart-oop', JSON.stringify(this.cartItems));
+        localStorage.setItem(localStorageKey, JSON.stringify(this.cartItems));
         },
         //Adds a product to the cart
-    addToCart(productId, quantity = 1){
+    addToCart(productId){
         let matchingItem;
 
         this.cartItems.forEach( (cartItem) => {
@@ -29,11 +30,11 @@ const cart = {
              });
 
         if(matchingItem){
-            matchingItem.quantity += Number(quantity);
+            matchingItem.quantity += 1;
         }else{
             this.cartItems.push({
             productId: productId,
-            quantity: Number(quantity),
+            quantity: 1,
             deliveryOptionId: '1'
             }); 
             }
@@ -67,10 +68,34 @@ const cart = {
 
 };
 
+return cart;
+}
+
+const cart = Cart('cart-oop');
+const businessCart = Cart('cart-business');
+
+
+
 
 cart.loadFromStorage();
 
+
+
+
+businessCart.loadFromStorage();
+
+
 console.log(cart);
+console.log(businessCart);
+
+ 
+
+
+
+
+
+
+
 
 
  
