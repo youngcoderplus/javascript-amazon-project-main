@@ -126,6 +126,30 @@ console.log(tshirt.getPrice());*/
 );
 console.log(product1)*/
  
+export let products = [];
+
+export function loadProducts(fun) { //the function that we provide to loadProducts this is know as a call back
+  const xhr = new XMLHttpRequest();
+  xhr.open('GET', 'https://supersimplebackend.dev/products');
+
+  xhr.addEventListener('load', () => {
+    products = JSON.parse(xhr.response).map((productDetails) => {
+        if(productDetails.type === 'clothing'){
+          return new Clothing(productDetails)
+        }
+          return new Product(productDetails);
+      });
+
+      console.log('load products');
+      
+      fun();
+  });
+
+  xhr.send();//send the request but doesn't wait for response(asynchronous)
+}
+//loadProducts();
+
+/*
 export const products = [
   {
     id: "e43638ce-6aa0-4b85-b27f-e1d07eb678c6",
@@ -798,4 +822,4 @@ export const products = [
  return new Product(productDetails);
 });
 
-//console.log(products)
+//console.log(products)*/
