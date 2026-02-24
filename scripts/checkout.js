@@ -5,6 +5,29 @@ import { loadCart } from "../data/cart.js";
 //import '../data/cart-class.js' ;     
 //import '../data/backend-practice.js';
 
+    async function loadPage(){
+        //console.log('load page');
+        
+       await loadProductsFetch();
+
+       await new Promise((resolve) => {
+        loadCart(() => {
+            resolve();
+    });
+    });
+
+        renderOrderSummary();
+        renderPaymentSummary();
+ 
+        //return 'value2';
+    }
+    loadPage()/*.then((value) => {
+        console.log('next step');
+        console.log(value); 
+    });*/
+
+
+    /*
  Promise.all([
     loadProductsFetch(),
     new Promise((resolve) => {
@@ -18,7 +41,7 @@ import { loadCart } from "../data/cart.js";
         renderOrderSummary();
         renderPaymentSummary();
  });
-
+*/
 
 /*
  Promise.all([
