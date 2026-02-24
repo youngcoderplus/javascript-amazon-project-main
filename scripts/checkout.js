@@ -1,10 +1,26 @@
 import { renderOrderSummary } from "./checkout/orderSummary.js";
 import { renderPaymentSummary } from "./checkout/paymentSummary.js";
-import { loadProducts } from "../data/products.js"; 
+import { /*loadProducts*/ loadProductsFetch } from "../data/products.js"; 
 import { loadCart } from "../data/cart.js";
 //import '../data/cart-class.js' ;     
 //import '../data/backend-practice.js';
 
+ Promise.all([
+    loadProductsFetch(),
+    new Promise((resolve) => {
+        loadCart(() => {
+            resolve();
+    })
+    })
+
+ ]).then((values) => {
+        console.log(values);
+        renderOrderSummary();
+        renderPaymentSummary();
+ });
+
+
+/*
  Promise.all([
     new Promise((resolve) =>{
     loadProducts(() => {
@@ -21,8 +37,9 @@ import { loadCart } from "../data/cart.js";
         renderOrderSummary();
         renderPaymentSummary();
         console.log(values);
- });
+ });*/ 
 
+ /*
 new Promise((resolve) =>{
     loadProducts(() => {
         resolve('value1'); //We call resolve to go to the next step
@@ -42,6 +59,8 @@ new Promise((resolve) =>{
         renderPaymentSummary();
 });
 
+
+*/
 
 /*
 loadProducts(() => {  //call back function, so it will run this after loadProducts is finished
