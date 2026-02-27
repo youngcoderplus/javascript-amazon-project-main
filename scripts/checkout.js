@@ -7,14 +7,25 @@ import { loadCart } from "../data/cart.js";
 
     async function loadPage(){
         //console.log('load page');
-        
-       await loadProductsFetch();
+        try {
+            //throw 'error1'
 
-       await new Promise((resolve) => {
-        loadCart(() => {
-            resolve();
+             await loadProductsFetch();
+
+            const value = await new Promise((resolve, reject) => {
+                //throw 'error2' //if we await a promise intead of going to dot catch it goes to catch
+            loadCart(() => {
+
+                //reject('error3')
+                resolve('value3');
     });
-    });
+    });//dot catch
+    
+        } catch(error){
+            console.log('Unexpected error. Please try again later.')
+        }
+        
+      
 
         renderOrderSummary();
         renderPaymentSummary();

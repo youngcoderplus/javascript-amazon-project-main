@@ -144,15 +144,18 @@ export function loadProductsFetch(){
 
         console.log('load products');
   
+  }).catch((error) => {
+    console.log('Unexpected error. Please try again later.')
   })
 
   return promise;
 }
+//loadProductsFetch();
 /*
 loadProductsFetch().then(() => {
   console.log('next step')
-});
-
+});*/
+/*
 export function loadProducts(fun) { //the function that we provide to loadProducts this is know as a call back
   const xhr = new XMLHttpRequest();
 
@@ -168,11 +171,16 @@ export function loadProducts(fun) { //the function that we provide to loadProduc
       
       fun();
   });
+
+  xhr.addEventListener('error', () => {
+    console.log('Unexpected error. Please try again later.')
+  })
+
   xhr.open('GET', 'https://supersimplebackend.dev/products');
   xhr.send();//send the request but doesn't wait for response(asynchronous)
-}*/
+}
 //loadProducts();
-
+*/
 /*
 export const products = [
   {
