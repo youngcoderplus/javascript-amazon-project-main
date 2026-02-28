@@ -36,9 +36,9 @@ import { cart, addToCart} from '../data/cart.js';
 import { products,loadProducts, getProduct } from '../data/products.js';
 import { formatCurrency } from './utils/money.js';
 
- loadProducts(renderProductGrid); //This function renderProductGrid will be called back in the future
+ loadProducts(renderProductsGrid); //This function renderProductGrid will be called back in the future
 
-export function renderProductGrid() {
+export function renderProductsGrid() {
 
       let productHTML = ' ';
 

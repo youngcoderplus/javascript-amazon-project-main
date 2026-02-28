@@ -1,3 +1,4 @@
+import { renderProductsGrid } from '../scripts/amazon.js';
 import {formatCurrency} from '../scripts/utils/money.js'
 
 export function getProduct(productId){
@@ -148,14 +149,14 @@ export function loadProductsFetch(){
     console.log('Unexpected error. Please try again later.')
   })
 
-  return promise;
+  return promise;//Return the promise out of the function so that we can use it in other files
 }
 //loadProductsFetch();
 /*
 loadProductsFetch().then(() => {
   console.log('next step')
 });*/
-/*
+
 export function loadProducts(fun) { //the function that we provide to loadProducts this is know as a call back
   const xhr = new XMLHttpRequest();
 
@@ -169,18 +170,18 @@ export function loadProducts(fun) { //the function that we provide to loadProduc
 
       console.log('load products');
       
-      fun();
+     fun();
   });
-
+/*
   xhr.addEventListener('error', () => {
     console.log('Unexpected error. Please try again later.')
   })
-
+*/
   xhr.open('GET', 'https://supersimplebackend.dev/products');
   xhr.send();//send the request but doesn't wait for response(asynchronous)
 }
-//loadProducts();
-*/
+loadProducts();
+
 /*
 export const products = [
   {

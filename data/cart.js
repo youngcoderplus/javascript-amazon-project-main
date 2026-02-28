@@ -74,7 +74,7 @@ export function updateDeliveryOption(productId, deliveryOptionId){
 };
 
 
-
+/*
 export function loadCart(fun) { //the function that we provide to loadProducts this is know as a call back
   const xhr = new XMLHttpRequest();
   xhr.open('GET', 'https://supersimplebackend.dev/cart');
@@ -84,5 +84,18 @@ export function loadCart(fun) { //the function that we provide to loadProducts t
       fun();
   });
 
+  xhr.send();//send the request but doesn't wait for response(asynchronous)
+}*/
+
+export function loadCart(fun) { //the function that we provide to loadProducts this is know as a call back
+  const xhr = new XMLHttpRequest();
+
+  xhr.addEventListener('load', () => {
+      const xhr = new XMLHttpRequest();
+      
+     fun();
+  });
+
+  xhr.open('GET', 'https://supersimplebackend.dev/cart');
   xhr.send();//send the request but doesn't wait for response(asynchronous)
 }
